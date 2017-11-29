@@ -1,0 +1,145 @@
+
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css"></link>
+  </head>
+  <body onLoad="setup();">
+    <header>Image Manipulations</header>
+    <div id="manipulations">
+      <section>
+        <header>Demonstration</header>
+        <div>
+          <label for="redLine">Red line:</label>
+          <input id="redLine" type="button" value="Draw" onClick="drawRedLine();"></input>
+        </div>
+        <div>
+          <label for="blueLine">Blue line:</label>
+          <input id="blueLine" type="button" value="Draw" onClick="drawBlueLine();"></input>
+        </div>
+        <header>Add a border</header>
+        <label for="borderColor">Color:</label>
+        <input id="borderColor" type="color" value="#FF0000"></input>
+        <label for="borderWidth">Width:</label>
+        <input id="borderWidth" type="range" value="10" min="1" max="100"></input>
+        <input type="button" value="Draw Border" onClick="drawBorder();"></input>
+      </section>
+      <section>
+        <header>Set colors</header>
+        <input type="button" value="Remove Red" onClick="removeRed();"></input>
+        <input type="button" value="Remove Green" onClick="removeGreen();"></input>
+        <input type="button" value="Remove Blue" onClick="removeBlue();"></input>
+        <!--
+        <input type="button" value="Max Red" onClick="maxRed();"></input>
+        <input type="button" value="Max Green" onClick="maxGreen();"></input>
+        <input type="button" value="Max Blue" onClick="maxBlue();"></input>
+        -->
+      </section>
+      <section>
+        <header>Adjust colors</header>
+        <!--
+        <input type="button" value="Increase Red" onClick="increaseRed();"></input>
+        <input type="button" value="Increase Green" onClick="increaseGreen();"></input>
+        <input type="button" value="Increase Blue" onClick="increaseBlue();"></input>
+        <input type="button" value="Decrease Red" onClick="decreaseRed();"></input>
+        <input type="button" value="Decrease Green" onClick="decreaseGreen();"></input>
+        <input type="button" value="Decrease Blue" onClick="decreaseBlue();"></input>
+        -->
+        <input type="button" value="Negative" onClick="negative();"></input>
+        <input type="button" value="Intensify" onClick="intensify();"></input>
+        <input type="button" value="Grayscale" onClick="grayscale();"></input>
+        <input type="button" value="Two Tone" onClick="blackAndWhite();"></input>
+        <input type="button" value="Four Tone" onClick="fourTone();"></input>
+      </section>
+      <section>
+        <header>Fade <input id="fadeColor" type="color"  value="#FFFFFF"></input></header>
+        <div>
+          <label>Vertical: </label>
+          <input type="button" value="In" onClick="fadeInVert();"></input>
+          <input type="button" value="Out" onClick="fadeOutVert();"></input>
+        </div>
+        <div>
+          <label>Horizontal: </label>
+          <input type="button" value="In" onClick="fadeInHoriz();"></input>
+          <input type="button" value="Out" onClick="fadeOutHoriz();"></input>
+        </div>
+      </section>
+      <section>
+        <header>Mirror</header>
+        <input type="button" value="Horizontally" onClick="mirrorHoriz();"></input>
+        <input type="button" value="Vertically" onClick="mirrorVert();"></input>
+      </section>
+
+      <section>
+        <header>Line drawing</header>
+        <div>
+          <label for="lineDrawingBackColor">Background color:</label>
+          <input id="lineDrawingBackColor" type="color" value="#ffffff"></input>
+        </div>
+        <div>
+          <label for="lineDrawingForeColor">Foreground color:</label>
+          <input id="lineDrawingForeColor" type="color"></input>
+        </div>
+        <input type="button" value="Make a Line Drawing" onClick="lineDrawing();"></input>
+      </section>
+
+      <section>
+        <header>Resize</header>
+        <input type="button" value="Double" onClick="bigger();"></input>
+        <input type="button" value="Half" onClick="smaller();"></input>
+      </section>
+
+      <section>
+        <header>Blend</header>
+        <div>
+          <label for="secondBlendFile">Background:</label>
+          <input type="text" value="flower.jpg" id="secondBlendFile">
+          <input type="button" value="Load" onClick="loadSecondImageForBlend();"></input>
+        </div>
+        <div>
+          <label for="firstBlendFile">Foreground:</label>
+          <input type="text" value="bear.jpg" id="firstBlendFile"></input>
+          <input type="button" value="Load" onClick="loadFirstImageForBlend();"></input>
+        </div>
+        <div>
+          <label for="blendSlider">Opacity of foreground:</label>
+          <input type="range" min="0" max="100" id="blendSlider"></input>
+          <input type="button" value="Blend Two Images" onClick="blend();"></input>
+        </div>
+      </section>
+      <section>
+        <header>Green Screen</header>
+        <div>
+          <label for="backFileName">Background:</label>
+          <input type="text" value="underwater.jpg" id="backFileName"></input> <input type="button" value="Load" onClick="loadBackgroundForGreenScreen();"></input>
+        </div>
+        <div>
+          <label for="greenFileName">Green image:</label>
+          <input type="text" value="scuba.jpg" id="greenFileName"></input> <input type="button" value="Load" onClick="loadForegroundForGreenScreen();"></input>
+        </div>
+        <div>
+          <label for="xOffset">X offset:</label>
+          <input type="number" value="0" id="xOffset" size="4"></input>
+        </div>
+        <div>
+          <label for="yOffset">Y offset:</label>
+          <input type="number" value="0" id="yOffset" size="4"></input>
+        </div>
+        <div>
+          <input type="button" value="Generate" onClick="greenScreen();"></input>
+        </div>
+      </section>
+    </div>
+    <div id="pictures">
+      <section>
+        <label for="myCanvas">Choose an image:</label>
+        <input type="button" value="Reset" onClick="reset();"></input>
+        <input type="button" value="Load Picture" onClick="loadMyImage();"></input>
+        <input type="button" value="Load Bear" onClick="loadBear();"></input>
+      </section>
+      <canvas id="myCanvas">Your browser does not support the HTML5 canvas tag.</canvas>
+    </div>
+    <script type="text/javascript" src="https://moodle.ucls.uchicago.edu/courses/IntroCS/JSlibraries/imageFuncs.js"></script>
+    <script type="text/javascript" src="imageProcFuncs.js"></script>
+  </body>
+</html>
+
