@@ -1,0 +1,74 @@
+
+<html>
+<head>
+<script type="text/javascript">
+
+var user=null;
+var assn=null;
+var base1 = "https://";
+var base2 = ".github.io/"
+	
+function writeLinks(){
+		user = document.getElementById("userName").value;
+		var obj =document.getElementById("assignment");
+		assn = obj.options[obj.selectedIndex].value;
+		document.getElementById("linkForm").action=base1+user+base2+assn;
+		document.getElementById("linkText").value=base1+user+base2+assn;
+		document.getElementById("linkText").size= (base1+user+base2+assn).length;
+	}
+
+
+
+</script>
+</head>
+
+<body onload="writeLinks()">
+<h2>Homework Upload Checker</h2>
+This page is designed to help you figure out if your homework is posted in the correct location so your teacher can see it.<br>
+<h3>Instructions:</h3>
+<ol>
+
+
+<li> Enter your GitHub user name: <input type="text" id="userName" value="" size=22 onkeyup="writeLinks()" onblur="writeLinks()"></li>
+<li>Choose the assignment you want to check:<br>
+<select name="assignment" id="assignment" onChange="writeLinks()">
+	<option value=""></option>
+	
+	<option value="#">------------ Unit 4 -------------</option>
+	<option value="name.txt">Name (~user/name.txt)</option>
+	<!--
+	<option value="firstPage.html">First Page (~user/firstPage.html)</option>
+	<option value="adventure">Choose Your Own Adventure (~user/adventure)</option>
+	<option value="movies">Favorite Movies Page (~user/movies)</option>
+	<option value="secretBits">Blown to Bits Styling (~user/secretBits)</option>
+	<option value="thumbnails">Thumbnail Gallery (~user/thumbnails)</option>
+	<option value="positions">Positions (~user/positions)</option>
+
+	<option value="#">------------ Unit 5 -------------</option>
+	<option value="tShirt">T-Shirt Shop (~user/tShirt)</option>
+	<option value="speed">Speed (~user/speed)</option>
+	<option value="chalkboard">Chalkboard (~user/chalkboard/)</option>
+	<option value="dynamicChalkboard">Dynamic Chalkboard (~user/dynamicChalkboard/)</option>
+	<option value="movingBoxes">Moving Boxes (~user/movingBoxes/)</option>
+
+<option value="patience">Patience(~user/patience/) -- Mr. Wheadon's classes</option>
+
+	<option value="#">------------ Unit 6 -------------</option>
+	<option value="imageProc/">image Processing (~user/imageProc/)</option>
+-->
+</select></li>
+<li> Check that your assignment is posted at the address below.  Click "Go" to test it out.<br> 
+<form id="linkForm" method=POST action="" style="margin-bottom: 0;" target="_blank">
+<input type=text value="" id="linkText" readonly><input type="submit" value="Go" onClick="writeLinks();">
+</form>
+</li>
+
+</ol>
+<h3>Troubleshooting:</h3>
+<ul>
+	<li>Object not found error: Check the file and directory names. They must be exactly as they appear in the assignment (capitals and spaces matter)</li>
+    
+    </li>
+</ul>
+</body>
+</html>
